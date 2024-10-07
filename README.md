@@ -9,7 +9,7 @@
 
 
 
-**PROJECT OVERVIEW**
+**Overview of the Project**
 
 **Project Name:**  
 **Data Preprocessing for AI Model Training**
