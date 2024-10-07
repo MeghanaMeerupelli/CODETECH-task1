@@ -1,0 +1,85 @@
+# A simple python program for data processing  
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Step 1: Load Data
+def load_data(file_path):
+    try:
+        data = pd.read_csv(file_path)
+        print("Data loaded successfully!")
+        return data
+    except Exception as e:
+        print(f"Error loading data: {e}")
+        return None
+
+# Step 2: Clean Data
+def clean_data(data):
+    # Remove duplicates
+    data = data.drop_duplicates()
+    # Fill missing values
+    for column in data.select_dtypes(include=[np.number]).columns:
+        data[column].fillna(data[column].mean(), inplace=True)
+    for column in data.select_dtypes(include=[object]).columns:
+        data[column].fillna(data[column].mode()[0], inplace=True)
+    print("Data cleaned!")
+    return data
+
+# Step 3: Transform Data
+def transform_data(data):
+    # Convert categorical variables to numeric
+    data = pd.get_dummies(data, drop_first=True)
+    print("Data transformed!")
+    return data
+
+# Step 4: Feature Scaling
+def scale_features(X_train, X_test):
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    print("Features scaled!")
+    return X_train_scaled, X_test_scaled
+
+# Step 5: Prepare Data for Model Training
+def prepare_data(data, target_column):
+    # Separate features and target variable
+    X = data.drop(columns=[target_column])
+    y = data[target_column]
+
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    print("Data prepared for model training!")
+    return X_train, X_test, y_train, y_test
+
+# Step 6: Main Processing Function
+def process_data(file_path, target_column):
+    # Load Data
+    data = load_data(file_path)
+    if data is None:
+        return
+
+    # Clean Data
+    cleaned_data = clean_data(data)
+
+    # Transform Data
+    transformed_data = transform_data(cleaned_data)
+
+    # Prepare Data for Training
+    X_train, X_test, y_train, y_test = prepare_data(transformed_data, target_column)
+
+    # Scale Features
+    X_train_scaled, X_test_scaled = scale_features(X_train, X_test)
+
+    return X_train_scaled, X_test_scaled, y_train, y_test
+
+# Example Usage
+if __name__ == "__main__":
+    file_path = 'dataset.csv'  # Replace with your dataset path
+    target_column = 'target'         # Replace with your target column name
+    X_train, X_test, y_train, y_test = process_data(file_path, target_column)
+
+    print("Training Features:\n", X_train)
+    print("Testing Features:\n", X_test)
+    print("Training Target:\n", y_train)
+    print("Testing Target:\n", y_test)
