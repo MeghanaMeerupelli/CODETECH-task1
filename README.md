@@ -1,6 +1,9 @@
-**Name:** Meerupelli Meghana
+**Name:** Meerupelli Meghana 
+
 **Company:** CODETECH IT SOLUTIONS
+
 **Intern Id:** CT08DS8958
+
 **Duration:** October to November 2024
 
 
