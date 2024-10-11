@@ -9,17 +9,17 @@
 
 
 
-**Overview of the Project**
+#### Overview of the Project
 
 **Project Name:**  
 **Data Preprocessing for AI Model Training**
 
 
-**Objective:**  
+#### Objective:
 To develop a robust data preprocessing pipeline that prepares raw datasets for training artificial intelligence models, ensuring the data is clean, transformed, and structured for optimal model performance.
 
 
-**Key Activities:**
+#### Key Activities:
 
 1. **Data Loading:**  
    Read raw data from CSV files into a structured format for analysis.
@@ -43,7 +43,7 @@ To develop a robust data preprocessing pipeline that prepares raw datasets for t
    Provide processed datasets ready for AI model training and evaluation.
 
 
-**Technology Used:**
+#### Technology Used:
 
 - **Programming Language:** Python
 - **Libraries:**
@@ -53,6 +53,6 @@ To develop a robust data preprocessing pipeline that prepares raw datasets for t
 - **Development Environment:** Visual Studio Code (VS Code)
 
 
-**Conclusion**
+#### Conclusion:
 
 This project provides a foundational framework for efficiently processing datasets in preparation for AI model training, making it easier for data scientists and machine learning practitioners to focus on model development and evaluation.
